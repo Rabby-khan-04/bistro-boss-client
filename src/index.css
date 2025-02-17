@@ -47,3 +47,16 @@
     @apply text-xl font-bold inline-block py-3 px-5;
   }
 }
+
+.carousel .thumbs-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel .thumbs-wrapper .thumb {
+  cursor: pointer;
+}
+
+.carousel .thumbs-wrapper .thumb.selected {
+  border-color: #d1a054;
+}

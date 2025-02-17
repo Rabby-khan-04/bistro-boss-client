@@ -1,5 +1,11 @@
+import Banner from "@/components/Home/Banner";
+
 const Home = () => {
-  return <div className="py-[500px]">Home</div>;
+  return (
+    <main>
+      <Banner />
+    </main>
+  );
 };
 
 export default Home;
