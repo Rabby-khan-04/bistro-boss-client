@@ -24,6 +24,7 @@
   /* Colors */
   --color-darkBlue: #111827;
   --color-dark: #151515;
+  --color-yellow: #eeff25;
   --color-darkGray: #1f2937;
   --color-gray: #e8e8e8;
   --color-golden: #bb8506;
@@ -38,4 +39,11 @@
   --color-products-2: #fecde9;
   --color-orders-1: #6aaeff;
   --color-orders-2: #b6f7ff;
+}
+
+/* CSS */
+@layer components {
+  .menu__container li a {
+    @apply text-xl font-bold inline-block py-3 px-5;
+  }
 }
