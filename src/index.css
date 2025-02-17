@@ -22,21 +22,20 @@
   --font-raleway: "Raleway", "sans-serif";
 
   /* Colors */
-  --color-darkBlue: "#111827";
-  --color-darkGray: "#1F2937";
-  --color-white: "#ffffff";
-  --color-black: "#000000";
-  --color-gray: "#E8E8E8";
-  --color-golden: "#BB8506";
-  --color-dark-gray: "#737373";
-  --color-rating: "#CD9003";
-  --color-gold: "#D1A054";
-  --color-revenu-1: "#BB34F5";
-  --color-revenu-2: "#FCDBFF";
-  --color-customers-1: "#D3A256";
-  --color-customers-2: "#FDE8C0";
-  --color-products-1: "#FE4880";
-  --color-products-2: "#FECDE9";
-  --color-orders-1: "#6AAEFF";
-  --color-orders-2: "#B6F7FF";
+  --color-darkBlue: #111827;
+  --color-dark: #151515;
+  --color-darkGray: #1f2937;
+  --color-gray: #e8e8e8;
+  --color-golden: #bb8506;
+  --color-dark-gray: #737373;
+  --color-rating: #cd9003;
+  --color-gold: #d1a054;
+  --color-revenu-1: #bb34f5;
+  --color-revenu-2: #fcdbff;
+  --color-customers-1: #d3a256;
+  --color-customers-2: #fde8c0;
+  --color-products-1: #fe4880;
+  --color-products-2: #fecde9;
+  --color-orders-1: #6aaeff;
+  --color-orders-2: #b6f7ff;
 }

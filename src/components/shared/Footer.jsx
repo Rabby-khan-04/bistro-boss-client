@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer>
-      <div className="grid grid-cols-2 text-white">
+      <div className="grid grid-cols-2 text-white font-inter">
         <div className="py-24 pr-40 flex flex-col items-end bg-darkGray">
           <div className="text-center max-w-[345px]">
             <h2 className="text-3xl uppercase mb-6">Contact Us</h2>
-            <div className="text-xl">
+            <div className="text-xl space-y-1">
               <p>123 ABS Street, Uni 21, Bangladesh</p>
               <p>+88 123456789</p>
               <p>Mon - Fri: 08:00 - 22:00</p>
@@ -36,7 +36,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-neutral py-4 text-center text-white">
+      <div className="bg-neutral py-4 text-center text-white bg-dark">
         <p className="text-xl">
           Copyright © CulinaryCloud. All rights reserved.
         </p>
