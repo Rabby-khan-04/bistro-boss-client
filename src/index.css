@@ -22,6 +22,15 @@
   --font-raleway: "Raleway", "sans-serif";
 
   /* Colors */
+  --color-primary: #eeff25;
+  --color-secondary: #d99904;
+  --color-accent: #1f2937;
+  --color-neutral: #151515;
+  --color-base-100: #ffffff;
+  --color-info: #9fc5e5;
+  --color-success: #4deadd;
+  --color-warning: #b08611;
+  --color-error: #b91c1c;
   --color-darkBlue: #111827;
   --color-dark: #151515;
   --color-yellow: #eeff25;
@@ -43,6 +52,9 @@
 
 /* CSS */
 @layer components {
+  .container {
+    @apply max-w-[1320px] mx-auto px-5 xl:px-0;
+  }
   .menu__container li a {
     @apply text-xl font-bold inline-block py-3 px-5;
   }
