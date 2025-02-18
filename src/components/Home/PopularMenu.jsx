@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import SectionTitle from "../shared/SectionTitle";
 import axios from "axios";
 import MenuItem from "../shared/MenuItem";
+import { useNavigate } from "react-router-dom";
 
 const PopularMenu = () => {
+  const navigate = useNavigate();
   const [popularMenu, setPopularMenu] = useState([]);
   useEffect(() => {
     axios.get("/menu.json").then((res) => {
@@ -27,7 +29,9 @@ const PopularMenu = () => {
           ))}
         </div>
         <div className="text-center mt-12">
-          <button className="black__btn">View Full Menu</button>
+          <button className="black__btn" onClick={() => navigate("/menu")}>
+            View Full Menu
+          </button>
         </div>
       </div>
     </section>

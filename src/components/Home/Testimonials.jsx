@@ -1,13 +1,12 @@
+import { Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { FaQuoteLeft } from "react-icons/fa";
-import Rating from "react-rating";
 import SectionTitle from "../shared/SectionTitle";
-import { Navigation } from "swiper/modules";
-import placeholderStarIco from "@/assets/icon/placeholder-star.png";
-import starIco from "@/assets/icon/star.png";
+import { Rating, RoundedStar } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
@@ -19,6 +18,12 @@ const Testimonials = () => {
   }, []);
 
   console.log(reviews);
+
+  const myStyles = {
+    itemShapes: RoundedStar,
+    activeFillColor: "#CD9003",
+    inactiveFillColor: "#A1A1A1",
+  };
 
   return (
     <section className="py-32">
@@ -36,36 +41,16 @@ const Testimonials = () => {
             loop={true}
             className="mySwiper"
           >
-            {reviews.map((review) => (
+            {reviews?.map((review) => (
               <SwiperSlide key={review._id}>
                 <div className="px-24 text-center font-inter">
                   <div className="flex-col flex items-center mb-10">
                     <Rating
                       style={{ maxWidth: 270 }}
-                      readonly
+                      value={review.rating}
+                      itemStyles={myStyles}
+                      readOnly
                       className="mb-12"
-                      placeholderRating={review.rating}
-                      placeholderSymbol={
-                        <img
-                          src={starIco}
-                          className="inline-block size-8"
-                          alt=""
-                        />
-                      }
-                      fullSymbol={
-                        <img
-                          src={starIco}
-                          className="inline-block size-8"
-                          alt=""
-                        />
-                      }
-                      emptySymbol={
-                        <img
-                          src={placeholderStarIco}
-                          className="inline-block size-8"
-                          alt=""
-                        />
-                      }
                     />
                     <FaQuoteLeft className="text-[100px] text-neutral " />
                   </div>

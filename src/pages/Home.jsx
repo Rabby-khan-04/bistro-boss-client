@@ -10,6 +10,7 @@ import Testimonials from "@/components/Home/Testimonials";
 const Home = () => {
   return (
     <main>
+      <title>Bistro Boss Restaurant</title>
       <Banner />
       <Category />
       <AboutSection />
