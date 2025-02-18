@@ -94,7 +94,7 @@ const Header = () => {
     <header
       className={`fixed z-50 w-full flex items-center ${
         scroll > 70
-          ? "py-4 px-7 bg-white text-black"
+          ? "py-4 px-7 bg-white text-black shadow"
           : "py-8 px-14 bg-dark/50 text-white"
       } transition-all duration-200`}
     >
@@ -114,7 +114,7 @@ const Header = () => {
               className="py-0 relative last:px-0 last:py-0"
             >
               <GiShoppingCart className="text-5xl" />
-              <div className="h-7 w-7 flex items-center justify-center rounded-full bg-yelltext-golden absolute -bottom-2 -right-2 p-0">
+              <div className="h-7 w-7 flex items-center justify-center rounded-full bg-gold absolute -bottom-2 -right-2 p-0">
                 <p className="text-sm">{0}</p>
               </div>
             </Link>
