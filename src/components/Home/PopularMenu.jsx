@@ -4,14 +4,14 @@ import axios from "axios";
 import MenuItem from "../shared/MenuItem";
 
 const PopularMenu = () => {
-  const [menu, setMenu] = useState([]);
+  const [popularMenu, setPopularMenu] = useState([]);
   useEffect(() => {
     axios.get("/menu.json").then((res) => {
       const popularMenu = res.data.filter(
         (menuItem) => menuItem.category === "popular"
       );
 
-      setMenu(popularMenu);
+      setPopularMenu(popularMenu);
     });
   }, []);
 
@@ -22,7 +22,7 @@ const PopularMenu = () => {
           <SectionTitle heading="FROM OUR MENU" subHeading="Check it out" />
         </div>
         <div className="grid md:grid-cols-2 gap-6">
-          {menu.map((menu) => (
+          {popularMenu.map((menu) => (
             <MenuItem menu={menu} key={menu._id} />
           ))}
         </div>
