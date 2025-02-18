@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import SectionCover from "./SectionCover";
-import MenuItem from "./MenuItem";
+import SectionCover from "../shared/SectionCover";
+import MenuItem from "../shared/MenuItem";
 import PropTypes from "prop-types";
 
 const MenuCategory = ({ menu, img = "", heading = "", subHeading = "" }) => {

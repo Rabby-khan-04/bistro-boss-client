@@ -4,16 +4,12 @@ import desertImg from "@/assets/menu/dessert-bg.jpeg";
 import pizzaImg from "@/assets/menu/pizza-bg.jpg";
 import saladImg from "@/assets/menu/salad-bg.jpg";
 import soupImg from "@/assets/menu/soup-bg.jpg";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import OfferedCategory from "@/components/Menu/OfferedCategory";
-import MenuCategory from "@/components/shared/MenuCategory";
+import MenuCategory from "@/components/Menu/MenuCategory";
+import useMenu from "@/hooks/useMenu";
 
 const Menu = () => {
-  const [menu, setMenu] = useState([]);
-  useEffect(() => {
-    axios.get("./menu.json").then((res) => setMenu(res.data));
-  }, []);
+  const [menu] = useMenu();
 
   const desert = menu.filter((menuItem) => menuItem.category === "dessert");
   const pizza = menu.filter((menuItem) => menuItem.category === "pizza");
@@ -40,6 +36,13 @@ const Menu = () => {
       menu: soup,
       heading: "Soup",
       img: soupImg,
+      subHeading:
+        "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    },
+    {
+      menu: salad,
+      heading: "Salad",
+      img: saladImg,
       subHeading:
         "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     },

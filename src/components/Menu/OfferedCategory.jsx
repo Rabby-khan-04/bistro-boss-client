@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import SectionTitle from "../shared/SectionTitle";
-import MenuCategory from "../shared/MenuCategory";
+import MenuCategory from "./MenuCategory";
 
 const OfferedCategory = ({ offered }) => {
   return (

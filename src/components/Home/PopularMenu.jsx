@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react";
 import SectionTitle from "../shared/SectionTitle";
-import axios from "axios";
 import MenuItem from "../shared/MenuItem";
 import { useNavigate } from "react-router-dom";
+import useMenu from "@/hooks/useMenu";
 
 const PopularMenu = () => {
   const navigate = useNavigate();
-  const [popularMenu, setPopularMenu] = useState([]);
-  useEffect(() => {
-    axios.get("/menu.json").then((res) => {
-      const popularMenu = res.data.filter(
-        (menuItem) => menuItem.category === "popular"
-      );
+  const [menu, loading] = useMenu();
 
-      setPopularMenu(popularMenu);
-    });
-  }, []);
+  if (loading)
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <h2 className="text-7xl font-bold font-cinzel text-center">Loading</h2>
+      </div>
+    );
+
+  const popularMenu = menu.filter(
+    (menuItem) => menuItem.category === "popular"
+  );
 
   return (
     <section className="py-32">
