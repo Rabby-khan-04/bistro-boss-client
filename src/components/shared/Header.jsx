@@ -83,7 +83,7 @@ const Header = () => {
             className={({ isActive }) => (isActive ? "text-gold" : "")}
             to="/signin"
           >
-            Signin
+            Sign in
           </NavLink>
         </li>
       )}

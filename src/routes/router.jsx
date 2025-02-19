@@ -38,17 +38,16 @@ const router = createBrowserRouter([
         path: "shop/:category",
         element: <Shop />,
       },
-      {
-        path: "signin",
-        element: <Signin />,
-      },
-      {
-        path: "signup",
-        element: <Signup />,
-      },
     ],
   },
-
+  {
+    path: "signin",
+    element: <Signin />,
+  },
+  {
+    path: "signup",
+    element: <Signup />,
+  },
   {
     path: "dashboard",
     element: (
