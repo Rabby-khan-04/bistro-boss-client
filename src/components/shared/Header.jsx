@@ -63,7 +63,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) => (isActive ? "text-gold" : "")}
-          to="/shop"
+          to="/shop/all"
         >
           Our Shop
         </NavLink>
