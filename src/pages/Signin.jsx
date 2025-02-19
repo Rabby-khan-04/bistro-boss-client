@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
-  LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "react-simple-captcha";
 import loginImg from "@/assets/others/authentication2.png";
@@ -11,12 +10,14 @@ import loginBg from "@/assets/others/authentication.png";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import useAuth from "@/hooks/useAuth";
 
 const Signin = () => {
   const [disabledBtn, setDisabledBtn] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from.pathname || "/";
+  const { signIn } = useAuth();
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -28,25 +29,25 @@ const Signin = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    // signIn(email, password)
-    //   .then((result) => {
-    //     const loggedUser = result.user;
-    //     console.log(loggedUser);
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
 
-    //     Swal.fire({
-    //       title: "Successfully login!!",
-    //       showClass: {
-    //         popup: "animate__animated animate__fadeInDown",
-    //       },
-    //       hideClass: {
-    //         popup: "animate__animated animate__fadeOutUp",
-    //       },
-    //     });
-    //     navigate(from, { replace: true });
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+        Swal.fire({
+          title: "Successfully login!!",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleValidateCaptch = (e) => {
@@ -64,7 +65,7 @@ const Signin = () => {
 
   return (
     <>
-      <title>Bistro Boss | Login</title>
+      <title>Bistro Boss | Sign In</title>
       <section style={{ backgroundImage: `url(${loginBg})` }} className="py-28">
         <div className="container">
           <div

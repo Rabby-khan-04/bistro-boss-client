@@ -41,16 +41,16 @@ const SocialLogin = () => {
       </h2>
       <div className="space-x-14">
         <button className="p-4 border border-neutral rounded-full hover:bg-neutral hover:text-white transition-all duration-300">
-          <FaFacebookF className="text-2xl" />
+          <FaFacebookF className="text-2xl cursor-pointer inline-block" />
         </button>
         <button
           //   onClick={handleGoogleSignin}
           className="p-4 border border-neutral rounded-full hover:bg-neutral hover:text-white transition-all duration-300"
         >
-          <FaGoogle className="text-2xl" />
+          <FaGoogle className="text-2xl cursor-pointer inline-block" />
         </button>
         <button className="p-4 border border-neutral rounded-full hover:bg-neutral hover:text-white transition-all duration-300">
-          <FaGithub className="text-2xl" />
+          <FaGithub className="text-2xl cursor-pointer inline-block" />
         </button>
       </div>
     </div>
