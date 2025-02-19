@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const MenuCard = ({ food }) => {
   const { name, recipe, image, category, price, _id } = food;
   return (
-    <div className="bg-[#F3F3F3] overflow-y-hidden">
+    <div className="bg-[#F3F3F3] overflow-y-hidden rounded-xl">
       <div className="relative">
         <img
           src={image}

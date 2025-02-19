@@ -5,7 +5,7 @@ import useMenu from "@/hooks/useMenu";
 
 const PopularMenu = () => {
   const navigate = useNavigate();
-  const [menu, loading] = useMenu();
+  const [menu, loading] = useMenu("popular");
 
   if (loading)
     return (
@@ -14,10 +14,6 @@ const PopularMenu = () => {
       </div>
     );
 
-  const popularMenu = menu.filter(
-    (menuItem) => menuItem.category === "popular"
-  );
-
   return (
     <section className="py-32">
       <div className="container">
@@ -25,8 +21,8 @@ const PopularMenu = () => {
           <SectionTitle heading="FROM OUR MENU" subHeading="Check it out" />
         </div>
         <div className="grid md:grid-cols-2 gap-6">
-          {popularMenu.map((menu) => (
-            <MenuItem menu={menu} key={menu._id} />
+          {menu.map((menuItem) => (
+            <MenuItem menu={menuItem} key={menu._id} />
           ))}
         </div>
         <div className="text-center mt-12">

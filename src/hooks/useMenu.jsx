@@ -1,15 +1,20 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import useAxiosSecure from "./useAxiosSecure";
 
-const useMenu = () => {
+const useMenu = (category = "all", page = 0, limit = 9) => {
+  const axiosSecure = useAxiosSecure();
   const [menu, setMenu] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get("/menu.json").then((res) => {
-      setMenu(res.data);
-      setLoading(false);
-    });
-  }, []);
+    const query = { params: { page, limit } };
+
+    axiosSecure
+      .get(`http://localhost:5000/api/v1/menu/menu/${category}`, query)
+      .then((res) => {
+        setMenu(res.data.data);
+        setLoading(false);
+      });
+  }, [category, axiosSecure, page, limit]);
 
   return [menu, loading];
 };
