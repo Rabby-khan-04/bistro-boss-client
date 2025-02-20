@@ -15,7 +15,7 @@ import useCart from "@/hooks/useCart";
 const Header = () => {
   const [scroll, setScroll] = useState(0);
   const { user, logOut } = useAuth();
-  const [cart, cartIsLoading] = useCart();
+  const [cart] = useCart();
 
   useEffect(() => {
     const handleScrollY = () => {

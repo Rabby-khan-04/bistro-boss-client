@@ -91,3 +91,15 @@
 .carousel .thumbs-wrapper .thumb.selected {
   border-color: #d1a054;
 }
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .ps-sidebar-container::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .ps-sidebar-container {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}

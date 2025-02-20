@@ -10,7 +10,7 @@ const MenuCard = ({ food }) => {
   const navigage = useNavigate();
   const location = useLocation();
   const axiosSecure = useAxiosSecure();
-  const { name, recipe, image, category, price, _id } = food;
+  const { name, recipe, image, price, _id } = food;
 
   const queryClient = useQueryClient();
 
