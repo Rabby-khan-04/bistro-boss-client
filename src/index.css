@@ -55,7 +55,8 @@
   .container {
     @apply max-w-[1320px] mx-auto px-5 xl:px-0;
   }
-  .menu__container li a {
+  .menu__container li a,
+  .menu__container li button {
     @apply text-xl font-bold inline-block py-3 px-5;
   }
 

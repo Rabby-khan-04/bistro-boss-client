@@ -9,10 +9,11 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Swal from "sweetalert2";
 
 const Header = () => {
   const [scroll, setScroll] = useState(0);
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
 
   useEffect(() => {
     const handleScrollY = () => {
@@ -24,7 +25,15 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScrollY);
   }, []);
 
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({ icon: "success", title: "User sign out successfully!!" });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const navItem = (
     <>
@@ -70,11 +79,8 @@ const Header = () => {
       </li>
       {user ? (
         <li>
-          <button
-            onClick={handleLogout}
-            className="btn btn-secondary text-black"
-          >
-            Logout
+          <button onClick={handleLogout} className="cursor-pointer">
+            Sign Out
           </button>
         </li>
       ) : (

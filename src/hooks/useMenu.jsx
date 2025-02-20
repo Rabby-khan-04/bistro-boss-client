@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "./useAxiosSecure";
 
-const useMenu = (category = "all", page = 0, limit = 9) => {
+const useMenu = (category = "all", page = "", limit = "") => {
   const axiosSecure = useAxiosSecure();
   const [menu, setMenu] = useState([]);
   const [loading, setLoading] = useState(true);

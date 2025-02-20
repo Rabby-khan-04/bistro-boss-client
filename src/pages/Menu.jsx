@@ -9,13 +9,14 @@ import MenuCategory from "@/components/Menu/MenuCategory";
 import useMenu from "@/hooks/useMenu";
 
 const Menu = () => {
-  const [menu] = useMenu();
+  const [menu] = useMenu("all");
 
   const desert = menu.filter((menuItem) => menuItem.category === "dessert");
   const pizza = menu.filter((menuItem) => menuItem.category === "pizza");
   const salad = menu.filter((menuItem) => menuItem.category === "salad");
   const soup = menu.filter((menuItem) => menuItem.category === "soup");
   const offered = menu.filter((menuItem) => menuItem.category === "offered");
+  console.log(menu);
 
   const allMenuDetails = [
     {
