@@ -18,7 +18,7 @@ const MenuCategory = ({ menu, img = "", heading = "", subHeading = "" }) => {
           </div>
           <div className="text-center">
             <Link
-              to={`/shop/${heading ? heading : "all"}`}
+              to={`/shop/${heading ? heading.toLocaleLowerCase() : "all"}`}
               className="black__btn"
             >
               ORDER YOUR FAVOURITE FOOD

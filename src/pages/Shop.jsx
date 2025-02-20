@@ -18,9 +18,9 @@ import useAxiosSecure from "@/hooks/useAxiosSecure";
 const Shop = () => {
   const axiosSecure = useAxiosSecure();
   const [totalMenu, setTotalMenu] = useState(0);
-  const [activeTab, setActiveTab] = useState("all");
-  const [currentPage, setCurrentPage] = useState(0);
   const { category } = useParams();
+  const [activeTab, setActiveTab] = useState(category || "all");
+  const [currentPage, setCurrentPage] = useState(0);
   const limit = 6;
   const numberOfPages = Math.ceil(totalMenu / limit);
   const pages = [...Array(numberOfPages).keys()];
@@ -33,7 +33,7 @@ const Shop = () => {
     axiosSecure
       .get(`/menu/count/${activeTab}`)
       .then((res) => setTotalMenu(res.data.data));
-  }, [axiosSecure, activeTab]);
+  }, [axiosSecure, activeTab, category]);
 
   const handlePrev = () => {
     if (currentPage > 0) {

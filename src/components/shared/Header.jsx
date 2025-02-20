@@ -10,10 +10,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Swal from "sweetalert2";
+import useCart from "@/hooks/useCart";
 
 const Header = () => {
   const [scroll, setScroll] = useState(0);
   const { user, logOut } = useAuth();
+  const [cart, cartIsLoading] = useCart();
 
   useEffect(() => {
     const handleScrollY = () => {
@@ -121,7 +123,9 @@ const Header = () => {
             >
               <GiShoppingCart className="text-5xl" />
               <div className="h-7 w-7 flex items-center justify-center rounded-full bg-gold absolute -bottom-2 -right-2 p-0">
-                <p className="text-sm">{0}</p>
+                <p className="text-sm">
+                  {cart.length > 9 ? "9+" : cart.length}
+                </p>
               </div>
             </Link>
           </li>

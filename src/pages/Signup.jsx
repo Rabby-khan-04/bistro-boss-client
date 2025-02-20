@@ -4,14 +4,16 @@ import { Link, useNavigate } from "react-router-dom";
 import loginImg from "@/assets/others/authentication2.png";
 import loginBg from "@/assets/others/authentication.png";
 import useAuth from "@/hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile } = useAuth();
   const handleSignup = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
+    const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
     createUser(email, password)
@@ -19,6 +21,19 @@ const Signup = () => {
         form.reset();
         const loggedUser = result.user;
         console.log(loggedUser);
+        updateUserProfile(name, photoURL)
+          .then(() => {
+            Swal.fire({
+              icon: "success",
+              title: "User registered successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -47,6 +62,17 @@ const Signup = () => {
                     type="text"
                     name="name"
                     placeholder="Enter you name"
+                    className="p-8 bg-white"
+                  />
+                </div>
+                <div className="space-y-4">
+                  <label className="text-xl font-semibold text-neutral inline-block">
+                    <span>Photo</span>
+                  </label>
+                  <Input
+                    type="url"
+                    name="photoURL"
+                    placeholder="Enter you photo url"
                     className="p-8 bg-white"
                   />
                 </div>
