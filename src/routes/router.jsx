@@ -19,6 +19,7 @@ import AdminHome from "@/pages/Dashboard/AdminHome";
 import AddProduct from "@/pages/Dashboard/AddProduct";
 import ManageOrder from "@/pages/Dashboard/ManageOrder";
 import ManageProduct from "@/pages/Dashboard/ManageProduct";
+import Checkout from "@/pages/Dashboard/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -118,6 +119,14 @@ const router = createBrowserRouter([
           <AdminRoute>
             <ManageOrder />
           </AdminRoute>
+        ),
+      },
+      {
+        path: "checkout",
+        element: (
+          <PrivateRoute>
+            <Checkout />
+          </PrivateRoute>
         ),
       },
     ],
