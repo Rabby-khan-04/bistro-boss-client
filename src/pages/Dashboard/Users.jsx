@@ -40,6 +40,27 @@ const Users = () => {
     },
   });
 
+  const { mutateAsync: makeAdmin } = useMutation({
+    mutationKey: ["make-admin"],
+    mutationFn: async (id) => {
+      const res = await axiosSecure.patch(`/users/admin/${id}`);
+
+      return res;
+    },
+    onSuccess: (res) => {
+      if (res.data.data.modifiedCount > 0) {
+        queryClient.invalidateQueries(["users"]);
+        Swal.fire({
+          position: "center-center",
+          icon: "success",
+          title: "User role updated successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    },
+  });
+
   if (userIsLoading) return <Spinner />;
 
   const handleDelete = (id) => {
@@ -69,22 +90,7 @@ const Users = () => {
       confirmButtonText: "Yes, Please!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/users/admin/${id}`, {
-          method: "PATCH",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.modifiedCount) {
-              Swal.fire({
-                position: "center-center",
-                icon: "success",
-                title: "Item Deleted Successfully",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            }
-          });
+        makeAdmin(id);
       }
     });
   };
