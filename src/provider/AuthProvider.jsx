@@ -11,10 +11,12 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "@/firebase/firebase.config";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -45,14 +47,33 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         setUser(currentUser);
         setLoading(false);
+        const userPayload = { email: currentUser.email };
+        axiosSecure
+          .post("/users/jwt", userPayload)
+          .then((res) => {
+            if (res.data.data) {
+              localStorage.setItem("access-token", res.data.data);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
         setUser(null);
         setLoading(false);
+        axiosSecure
+          .post("/users/logout")
+          .then(() => {
+            localStorage.removeItem("access-token");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [axiosSecure]);
 
   const authInfo = {
     user,
