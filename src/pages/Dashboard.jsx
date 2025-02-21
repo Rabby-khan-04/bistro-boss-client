@@ -10,11 +10,12 @@ import { HiEnvelope, HiUserGroup } from "react-icons/hi2";
 import { TfiMenuAlt } from "react-icons/tfi";
 import useCart from "@/hooks/useCart";
 import { Sidebar } from "react-pro-sidebar";
+import useAdmin from "@/hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
 
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <main>

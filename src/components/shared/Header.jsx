@@ -11,12 +11,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Swal from "sweetalert2";
 import useCart from "@/hooks/useCart";
+import useAdmin from "@/hooks/useAdmin";
 
 const Header = () => {
   const [scroll, setScroll] = useState(0);
   const { user, logOut } = useAuth();
   const [cart] = useCart();
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
+
+  console.log({ isAdmin });
 
   useEffect(() => {
     const handleScrollY = () => {
