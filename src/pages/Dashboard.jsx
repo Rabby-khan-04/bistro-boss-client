@@ -13,6 +13,7 @@ import { Sidebar } from "react-pro-sidebar";
 
 const Dashboard = () => {
   const [cart] = useCart();
+
   return (
     <main>
       <title>Bistro Boss | Dashboard</title>

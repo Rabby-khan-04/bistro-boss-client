@@ -5,10 +5,13 @@ import loginImg from "@/assets/others/authentication2.png";
 import loginBg from "@/assets/others/authentication.png";
 import useAuth from "@/hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 
 const Signup = () => {
   const navigate = useNavigate();
   const { createUser, updateUserProfile } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
   const handleSignup = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -23,13 +26,27 @@ const Signup = () => {
         console.log(loggedUser);
         updateUserProfile(name, photoURL)
           .then(() => {
-            Swal.fire({
-              icon: "success",
-              title: "User registered successfully",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            navigate("/");
+            const userInfo = {
+              name: loggedUser.displayName,
+              email: loggedUser.email,
+            };
+
+            axiosSecure
+              .post("/users/user", userInfo)
+              .then((res) => {
+                if (res.data.data.insertedId) {
+                  Swal.fire({
+                    icon: "success",
+                    title: "User registered successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate("/");
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           })
           .catch((err) => {
             console.log(err);

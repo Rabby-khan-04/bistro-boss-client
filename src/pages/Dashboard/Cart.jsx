@@ -15,18 +15,27 @@ const Cart = () => {
 
   const { mutateAsync: deleteCartItem } = useMutation({
     mutationKey: ["delet-cart"],
-    mutationFn: async (id) => {
-      await axiosSecure.delete(`/carts/cart/${id}`);
-    },
-    onSuccess: () => {
-      Swal.fire({
-        position: "center-center",
-        icon: "success",
-        title: "Item Deleted Successfully",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      queryClient.invalidateQueries(["cart"]);
+    mutationFn: async (id) => await axiosSecure.delete(`/carts/cart/${id}`),
+
+    onSuccess: (res) => {
+      if (res.data.data.deletedCount > 0) {
+        Swal.fire({
+          position: "center-center",
+          icon: "success",
+          title: "Item Deleted Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        queryClient.invalidateQueries(["cart"]);
+      } else {
+        Swal.fire({
+          position: "center-center",
+          icon: "error",
+          title: "Could not delete the item!!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     },
   });
 
