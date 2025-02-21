@@ -16,6 +16,7 @@ const Header = () => {
   const [scroll, setScroll] = useState(0);
   const { user, logOut } = useAuth();
   const [cart] = useCart();
+  const isAdmin = true;
 
   useEffect(() => {
     const handleScrollY = () => {
@@ -58,7 +59,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) => (isActive ? "text-gold" : "")}
-          to="/dashboard/home"
+          to={`/dashboard/${isAdmin ? "admin" : "home"}`}
         >
           Dashboard
         </NavLink>

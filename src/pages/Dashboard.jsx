@@ -14,12 +14,14 @@ import { Sidebar } from "react-pro-sidebar";
 const Dashboard = () => {
   const [cart] = useCart();
 
+  const isAdmin = true;
+
   return (
     <main>
       <title>Bistro Boss | Dashboard</title>
       <section>
         <div className="flex">
-          <div className="relative">
+          <div className="relative h-screen">
             <Sidebar
               width="280px"
               backgroundColor="none"
@@ -34,151 +36,157 @@ const Dashboard = () => {
                 </p>
               </div>
               <ul className="text-neutral text-xl font-cinzel font-medium space-y-6">
-                <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      (isActive ? "text-white" : "") +
-                      " " +
-                      "flex items-center gap-3"
-                    }
-                    to="/dashboard/admin"
-                  >
-                    <AiFillHome className="text-3xl" />
-                    Home
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      (isActive ? "text-white" : "") +
-                      " " +
-                      "flex items-center gap-3"
-                    }
-                    to="/dashboard/add-product"
-                  >
-                    <MdOutlineRestaurant className="text-3xl" />
-                    Add Product
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      (isActive ? "text-white" : "") +
-                      " " +
-                      "flex items-center gap-3"
-                    }
-                    to="/dashboard/manage-product"
-                  >
-                    <TfiMenuAlt className="text-3xl" />
-                    Manage Product
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      (isActive ? "text-white" : "") +
-                      " " +
-                      "flex items-center gap-3"
-                    }
-                    to="/dashboard/manage-order"
-                  >
-                    <FaBook className="text-3xl" />
-                    Manage Orders
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      (isActive ? "text-white" : "") +
-                      " " +
-                      "flex items-center gap-3"
-                    }
-                    to="/dashboard/users"
-                  >
-                    <HiUserGroup className="text-3xl" />
-                    Users
-                  </NavLink>
-                </li>
-
-                <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      (isActive ? "text-white" : "") +
-                      " " +
-                      "flex items-center gap-3"
-                    }
-                    to="/dashboard/home"
-                  >
-                    <AiFillHome className="text-3xl" />
-                    Home
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      (isActive ? "text-white" : "") +
-                      " " +
-                      "flex items-center gap-3"
-                    }
-                    to="/dashboard/reservation"
-                  >
-                    <IoCalendar className="text-3xl" />
-                    Reservation
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      (isActive ? "text-white" : "") +
-                      " " +
-                      "flex items-center gap-3"
-                    }
-                    to="/dashboard/payment-history"
-                  >
-                    <GiWallet className="text-3xl" />
-                    Payment History
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      (isActive ? "text-white" : "") +
-                      " " +
-                      "flex items-center gap-3"
-                    }
-                    to="/dashboard/cart"
-                  >
-                    <RiShoppingCart2Fill className="text-3xl" />
-                    My Cart
-                    <p className="badge badge-error">{cart.length}</p>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      (isActive ? "text-white" : "") +
-                      " " +
-                      "flex items-center gap-3"
-                    }
-                    to="/dashboard/add-review"
-                  >
-                    <VscFeedback className="text-3xl" />
-                    Add Review
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      (isActive ? "text-white" : "") +
-                      " " +
-                      "flex items-center gap-3"
-                    }
-                    to="/dashboard/my-orders"
-                  >
-                    <FaCalendarCheck className="text-3xl" />
-                    My Orders
-                  </NavLink>
-                </li>
+                {isAdmin ? (
+                  <>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          (isActive ? "text-white" : "") +
+                          " " +
+                          "flex items-center gap-3"
+                        }
+                        to="/dashboard/admin"
+                      >
+                        <AiFillHome className="text-3xl" />
+                        Dashboard
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          (isActive ? "text-white" : "") +
+                          " " +
+                          "flex items-center gap-3"
+                        }
+                        to="/dashboard/add-product"
+                      >
+                        <MdOutlineRestaurant className="text-3xl" />
+                        Add Product
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          (isActive ? "text-white" : "") +
+                          " " +
+                          "flex items-center gap-3"
+                        }
+                        to="/dashboard/manage-product"
+                      >
+                        <TfiMenuAlt className="text-3xl" />
+                        Manage Product
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          (isActive ? "text-white" : "") +
+                          " " +
+                          "flex items-center gap-3"
+                        }
+                        to="/dashboard/manage-order"
+                      >
+                        <FaBook className="text-3xl" />
+                        Manage Orders
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          (isActive ? "text-white" : "") +
+                          " " +
+                          "flex items-center gap-3"
+                        }
+                        to="/dashboard/users"
+                      >
+                        <HiUserGroup className="text-3xl" />
+                        Users
+                      </NavLink>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          (isActive ? "text-white" : "") +
+                          " " +
+                          "flex items-center gap-3"
+                        }
+                        to="/dashboard/home"
+                      >
+                        <AiFillHome className="text-3xl" />
+                        Dashboard
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          (isActive ? "text-white" : "") +
+                          " " +
+                          "flex items-center gap-3"
+                        }
+                        to="/dashboard/reservation"
+                      >
+                        <IoCalendar className="text-3xl" />
+                        Reservation
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          (isActive ? "text-white" : "") +
+                          " " +
+                          "flex items-center gap-3"
+                        }
+                        to="/dashboard/payment-history"
+                      >
+                        <GiWallet className="text-3xl" />
+                        Payment History
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          (isActive ? "text-white" : "") +
+                          " " +
+                          "flex items-center gap-3"
+                        }
+                        to="/dashboard/cart"
+                      >
+                        <RiShoppingCart2Fill className="text-3xl" />
+                        My Cart
+                        <p className="badge badge-error">{cart.length}</p>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          (isActive ? "text-white" : "") +
+                          " " +
+                          "flex items-center gap-3"
+                        }
+                        to="/dashboard/add-review"
+                      >
+                        <VscFeedback className="text-3xl" />
+                        Add Review
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          (isActive ? "text-white" : "") +
+                          " " +
+                          "flex items-center gap-3"
+                        }
+                        to="/dashboard/my-orders"
+                      >
+                        <FaCalendarCheck className="text-3xl" />
+                        My Orders
+                      </NavLink>
+                    </li>
+                  </>
+                )}
 
                 <li>
                   <div className="h-px bg-white"></div>
