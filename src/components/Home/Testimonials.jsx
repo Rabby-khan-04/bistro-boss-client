@@ -17,8 +17,6 @@ const Testimonials = () => {
       .then((data) => setReviews(data));
   }, []);
 
-  console.log(reviews);
-
   const myStyles = {
     itemShapes: RoundedStar,
     activeFillColor: "#CD9003",

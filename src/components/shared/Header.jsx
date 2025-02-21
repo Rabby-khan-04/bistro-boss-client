@@ -19,7 +19,7 @@ const Header = () => {
   const [cart] = useCart();
   const [isAdmin] = useAdmin();
 
-  console.log({ isAdmin });
+  console.log(user);
 
   useEffect(() => {
     const handleScrollY = () => {
