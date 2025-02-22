@@ -7,16 +7,18 @@ import soupImg from "@/assets/menu/soup-bg.jpg";
 import OfferedCategory from "@/components/Menu/OfferedCategory";
 import MenuCategory from "@/components/Menu/MenuCategory";
 import useMenu from "@/hooks/useMenu";
+import Spinner from "@/components/shared/Spinner";
 
 const Menu = () => {
-  const [menu] = useMenu("all");
+  const [menu, menuIsLoading] = useMenu("all");
 
-  const desert = menu.filter((menuItem) => menuItem.category === "dessert");
-  const pizza = menu.filter((menuItem) => menuItem.category === "pizza");
-  const salad = menu.filter((menuItem) => menuItem.category === "salad");
-  const soup = menu.filter((menuItem) => menuItem.category === "soup");
-  const offered = menu.filter((menuItem) => menuItem.category === "offered");
-  console.log(menu);
+  if (menuIsLoading) return <Spinner />;
+
+  const desert = menu?.filter((menuItem) => menuItem.category === "dessert");
+  const pizza = menu?.filter((menuItem) => menuItem.category === "pizza");
+  const salad = menu?.filter((menuItem) => menuItem.category === "salad");
+  const soup = menu?.filter((menuItem) => menuItem.category === "soup");
+  const offered = menu?.filter((menuItem) => menuItem.category === "offered");
 
   const allMenuDetails = [
     {

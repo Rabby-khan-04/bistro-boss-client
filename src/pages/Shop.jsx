@@ -79,7 +79,7 @@ const Shop = () => {
             {categories.map((item, idx) => (
               <TabsContent key={idx} value={item.toLocaleLowerCase()}>
                 <div className="grid grid-cols-3 gap-6">
-                  {menu.map((food) => (
+                  {menu?.map((food) => (
                     <MenuCard key={food._id} food={food} />
                   ))}
                 </div>

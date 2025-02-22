@@ -1,9 +1,12 @@
 import SectionTitle from "../shared/SectionTitle";
 import useMenu from "@/hooks/useMenu";
 import MenuCard from "../shared/MenuCard";
+import Spinner from "../shared/Spinner";
 
 const Recommendation = () => {
-  const [menu] = useMenu("popular", 0, 3);
+  const [menu, menuIsLoading] = useMenu("popular", 0, 3);
+
+  if (menuIsLoading) return <Spinner />;
   return (
     <section className="pb-32">
       <div className="container">
@@ -11,7 +14,7 @@ const Recommendation = () => {
           <SectionTitle heading={"CHEF RECOMMENDS"} subHeading={"Should Try"} />
         </div>
         <div className="grid grid-cols-3 gap-6">
-          {menu.map((menuItem) => (
+          {menu?.map((menuItem) => (
             <MenuCard key={menuItem._id} food={menuItem} />
           ))}
         </div>

@@ -157,7 +157,7 @@ const Dashboard = () => {
                       >
                         <RiShoppingCart2Fill className="text-3xl" />
                         My Cart
-                        <p className="badge badge-error">{cart.length}</p>
+                        <p className="badge badge-error">({cart.length})</p>
                       </NavLink>
                     </li>
                     <li>

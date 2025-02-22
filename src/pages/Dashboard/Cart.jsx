@@ -42,6 +42,7 @@ const Cart = () => {
   if (cartIsLoading) return <Spinner />;
 
   const goToPayment = () => {
+    if (cart.length === 0) return;
     navigate("/dashboard/checkout");
   };
 
@@ -75,8 +76,9 @@ const Cart = () => {
             <p className="text-3xl">Total orders: {cart.length}</p>
             <p className="text-3xl">total price: {totalPrice}</p>
             <button
-              className="p-4 rounded-xl bg-gold border-gold text-white text-xl"
+              className="p-4 rounded-xl bg-gold border-gold text-white text-xl cursor-pointer disabled:bg-gray-300"
               onClick={goToPayment}
+              disabled={cart.length === 0}
             >
               Pay
             </button>

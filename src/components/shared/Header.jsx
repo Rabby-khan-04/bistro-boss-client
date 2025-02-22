@@ -19,8 +19,6 @@ const Header = () => {
   const [cart] = useCart();
   const [isAdmin] = useAdmin();
 
-  console.log(user);
-
   useEffect(() => {
     const handleScrollY = () => {
       setScroll(window.scrollY);
