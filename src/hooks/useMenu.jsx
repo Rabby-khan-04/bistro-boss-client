@@ -1,22 +1,25 @@
-import { useEffect, useState } from "react";
 import useAxiosSecure from "./useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const useMenu = (category = "all", page = "", limit = "") => {
   const axiosSecure = useAxiosSecure();
-  const [menu, setMenu] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const query = { params: { page, limit } };
+  const query = { params: { page, limit } };
 
-    axiosSecure
-      .get(`http://localhost:5000/api/v1/menu/menu/${category}`, query)
-      .then((res) => {
-        setMenu(res.data.data);
-        setLoading(false);
-      });
-  }, [category, axiosSecure, page, limit]);
+  const { data: menu, isLoading: menuIsLoading } = useQuery({
+    queryKey: ["menu", { category, axiosSecure, page, limit }],
+    queryFn: async () => {
+      const res = await axiosSecure.get(
+        `http://localhost:5000/api/v1/menu/menu/${category}`,
+        query
+      );
 
-  return [menu, loading];
+      console.log({ res });
+
+      return res.data.data;
+    },
+  });
+
+  return [menu, menuIsLoading];
 };
 
 export default useMenu;

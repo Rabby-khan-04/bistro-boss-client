@@ -5,9 +5,9 @@ import useMenu from "@/hooks/useMenu";
 
 const PopularMenu = () => {
   const navigate = useNavigate();
-  const [menu, loading] = useMenu("popular");
+  const [menu, menuIsLoading] = useMenu("popular");
 
-  if (loading)
+  if (menuIsLoading)
     return (
       <div className="h-screen flex items-center justify-center">
         <h2 className="text-7xl font-bold font-cinzel text-center">Loading</h2>
