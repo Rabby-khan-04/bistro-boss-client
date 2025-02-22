@@ -13,8 +13,6 @@ const useMenu = (category = "all", page = "", limit = "") => {
         query
       );
 
-      console.log({ res });
-
       return res.data.data;
     },
   });

@@ -20,6 +20,7 @@ import AddProduct from "@/pages/Dashboard/AddProduct";
 import ManageOrder from "@/pages/Dashboard/ManageOrder";
 import ManageProduct from "@/pages/Dashboard/ManageProduct";
 import Checkout from "@/pages/Dashboard/Checkout";
+import UpdateProduct from "@/pages/Dashboard/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -127,6 +128,14 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <Checkout />
           </PrivateRoute>
+        ),
+      },
+      {
+        path: "update-product/:id",
+        element: (
+          <AdminRoute>
+            <UpdateProduct />
+          </AdminRoute>
         ),
       },
     ],

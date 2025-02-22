@@ -13,9 +13,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ManageProduct = () => {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
   const [totalMenu, setTotalMenu] = useState(0);
   const axiosSecure = useAxiosSecure();
@@ -119,7 +121,14 @@ const ManageProduct = () => {
                         <h2>${menuItem.price}</h2>
                       </td>
                       <td>
-                        <button className="p-4 inline-block rounded-xl cursor-pointer bg-golden border-golden">
+                        <button
+                          className="p-4 inline-block rounded-xl cursor-pointer bg-golden border-golden"
+                          onClick={() =>
+                            navigate(
+                              `/dashboard/update-product/${menuItem._id}`
+                            )
+                          }
+                        >
                           <FaRegEdit className="text-2xl text-white" />
                         </button>
                       </td>
