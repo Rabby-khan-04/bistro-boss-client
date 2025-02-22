@@ -20,13 +20,13 @@ const Dashboard = () => {
   return (
     <main>
       <title>Bistro Boss | Dashboard</title>
-      <section>
+      <section className="relative">
         <div className="flex">
-          <div className="relative h-screen">
+          <div className="">
             <Sidebar
               width="280px"
               backgroundColor="none"
-              className="bg-gold sticky top-0 h-full py-12 px-6"
+              className="bg-gold h-full py-12 px-6"
             >
               <div className="mb-14">
                 <h2 className="text-4xl font-bold font-cinzel text-neutral">

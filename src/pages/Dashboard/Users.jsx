@@ -97,7 +97,7 @@ const Users = () => {
 
   return (
     <>
-      <title>Bistro Boss | All Users</title>
+      <title>Bistro Boss | Users</title>
       <div>
         <div className="db__container">
           <SectionTitle
