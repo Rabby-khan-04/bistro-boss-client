@@ -2,7 +2,10 @@ import useAuth from "@/hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import useCart from "@/hooks/useCart";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function CheckoutForm() {
   const [error, setError] = useState(null);
@@ -14,6 +17,8 @@ function CheckoutForm() {
   const axiosSecure = useAxiosSecure();
   const [cart] = useCart();
   const { user } = useAuth();
+  const queryCleint = useQueryClient();
+  const navigate = useNavigate();
 
   const price = cart?.reduce(
     (prevVal, currVal) => prevVal + currVal.product.price,
@@ -21,11 +26,13 @@ function CheckoutForm() {
   );
 
   useEffect(() => {
-    axiosSecure
-      .post("/payment/create-payment-intent", { price })
-      .then((res) => {
-        setClientSecret(res.data.data.clientSecret);
-      });
+    if (price) {
+      axiosSecure
+        .post("/payment/create-payment-intent", { price })
+        .then((res) => {
+          setClientSecret(res.data.data.clientSecret);
+        });
+    }
   }, [axiosSecure, price]);
 
   const handleSubmit = async (e) => {
@@ -67,6 +74,33 @@ function CheckoutForm() {
     } else {
       if (paymentIntent.status === "succeeded") {
         setTransitionId(paymentIntent.id);
+
+        const orderInfo = {
+          email: user?.email,
+          price,
+          date: new Date(),
+          cartId: cart?.map((item) => item._id),
+          menuId: cart?.map((item) => item.menuId),
+          status: "pending",
+          transitionId: paymentIntent.id,
+        };
+
+        const orderRes = await axiosSecure.post("/payment/order", orderInfo);
+        console.log(orderRes);
+
+        if (
+          orderRes?.data?.data?.deleted?.deletedCount &&
+          orderRes?.data?.data?.order?.insertedId
+        ) {
+          queryCleint.invalidateQueries(["cart"]);
+          Swal.fire({
+            icon: "success",
+            title: "Order placed successfully!!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/dashboard/my-orders");
+        }
       }
     }
 
