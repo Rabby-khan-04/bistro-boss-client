@@ -2,17 +2,13 @@ import SectionTitle from "../shared/SectionTitle";
 import MenuItem from "../shared/MenuItem";
 import { useNavigate } from "react-router-dom";
 import useMenu from "@/hooks/useMenu";
+import Spinner from "../shared/Spinner";
 
 const PopularMenu = () => {
   const navigate = useNavigate();
   const [menu, menuIsLoading] = useMenu("popular");
 
-  if (menuIsLoading)
-    return (
-      <div className="h-screen flex items-center justify-center">
-        <h2 className="text-7xl font-bold font-cinzel text-center">Loading</h2>
-      </div>
-    );
+  if (menuIsLoading) return <Spinner />;
 
   return (
     <section className="py-32">
