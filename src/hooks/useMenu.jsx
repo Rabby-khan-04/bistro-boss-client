@@ -8,10 +8,7 @@ const useMenu = (category = "all", page = "", limit = "") => {
   const { data: menu, isLoading: menuIsLoading } = useQuery({
     queryKey: ["menu", { category, axiosSecure, page, limit }],
     queryFn: async () => {
-      const res = await axiosSecure.get(
-        `http://localhost:5000/api/v1/menu/menu/${category}`,
-        query
-      );
+      const res = await axiosSecure.get(`/menu/menu/${category}`, query);
 
       return res.data.data;
     },
